@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <!-- Screen title -->
+    <TextView
+        android:id="@+id/addEditTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Details"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Restaurant name input -->
+    <EditText
+        android:id="@+id/inputTitle"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Title"
+        android:textSize="18sp"
+        android:inputType="textCapSentences"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Cuisine type input -->
+    <EditText
+        android:id="@+id/inputCuisine"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Cuisine type"
+        android:textSize="18sp"
+        android:inputType="textCapSentences"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Description input -->
+    <EditText
+        android:id="@+id/inputDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:textSize="18sp"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:gravity="top"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Save button -->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Save"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Cancel button -->
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Cancel"
+        android:textSize="18sp" />
+
+</LinearLayout>
