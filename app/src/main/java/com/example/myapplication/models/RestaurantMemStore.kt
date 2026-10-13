@@ -32,6 +32,7 @@ class RestaurantMemStore : RestaurantStore {
         existing.title = restaurant.title
         existing.cuisine = restaurant.cuisine
         existing.description = restaurant.description
+        existing.rating = restaurant.rating
         return true
     }
 

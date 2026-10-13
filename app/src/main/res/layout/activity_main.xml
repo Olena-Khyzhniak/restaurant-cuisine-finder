@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <!-- App title -->
+    <TextView
+        android:id="@+id/mainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Finder"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="48dp" />
+
+    <!-- Navigate to the restaurant list screen -->
+    <Button
+        android:id="@+id/btnViewRestaurants"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="View Restaurants"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Navigate to the add restaurant screen -->
+    <Button
+        android:id="@+id/btnAddRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Add Restaurant"
+        android:textSize="18sp" />
+
+</LinearLayout>

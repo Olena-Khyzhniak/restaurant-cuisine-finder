@@ -12,9 +12,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <!-- AddEdit can be reached from both MainActivity and RestaurantListActivity;
+             declare RestaurantListActivity as default parent so Up goes back to the list -->
         <activity
             android:name=".AddEditActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".RestaurantListActivity"
+            android:label="Restaurant Details">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RestaurantListActivity" />
+        </activity>
+
+        <!-- RestaurantListActivity — Up goes back to MainActivity -->
+        <activity
+            android:name=".RestaurantListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="Restaurants">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- AboutActivity — Up goes back to MainActivity -->
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="About">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -23,7 +55,6 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
