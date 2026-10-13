@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Restaurant Finder</string>
+    <string name="nav_header_title">Restaurant Finder</string>
+    <string name="nav_header_subtitle">Explore cuisines near you</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_view_restaurants">View Restaurants</string>
+    <string name="menu_add_restaurant">Add Restaurant</string>
+    <string name="menu_about">About</string>
+    <string name="about_dialog_title">About Restaurant Finder</string>
+    <string name="about_dialog_message">An app for true food lovers who want to turn every lunch and dinner into an extraordinary culinary experience! Discover amazing flavours, explore delicious dishes, and make every meal unforgettable. Because great food is not just a meal - it’s a passion!</string>
+    <string name="search_hint">Search by cuisine…</string>
+    <!-- Cuisine drop-down list entries -->
+    <string-array name="cuisine_types">
+        <item>Italian</item>
+        <item>Chinese</item>
+        <item>Japanese</item>
+        <item>Mexican</item>
+        <item>Indian</item>
+        <item>French</item>
+        <item>Thai</item>
+        <item>American</item>
+        <item>Mediterranean</item>
+        <item>Greek</item>
+        <item>Spanish</item>
+        <item>Lebanese</item>
+        <item>Vietnamese</item>
+        <item>Korean</item>
+        <item>Other</item>
+    </string-array>
 </resources>
