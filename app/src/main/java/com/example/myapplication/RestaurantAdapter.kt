@@ -1,8 +1,10 @@
 package com.example.myapplication
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +22,7 @@ class RestaurantAdapter(
     // ViewHolder caches the views inside one card so they don't need to be
     // looked up on every scroll — improves list performance.
     class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val image: ImageView       = itemView.findViewById(R.id.restaurantImage)
         val title: TextView        = itemView.findViewById(R.id.restaurantTitle)
         val cuisine: TextView      = itemView.findViewById(R.id.restaurantCuisine)
         val description: TextView  = itemView.findViewById(R.id.restaurantDescription)
@@ -38,6 +41,15 @@ class RestaurantAdapter(
     // Fills the card views with data from the restaurant at the given position
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurants[position]
+
+        // Show picked image or fallback to gallery icon
+        val imageUri = restaurant.imageUri
+        if (imageUri != null) {
+            holder.image.setImageURI(Uri.parse(imageUri))
+        } else {
+            holder.image.setImageResource(android.R.drawable.ic_menu_gallery)
+        }
+
         holder.title.text       = restaurant.title
         holder.cuisine.text     = restaurant.cuisine
         holder.description.text = restaurant.description
