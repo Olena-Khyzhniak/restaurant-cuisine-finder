@@ -20,19 +20,22 @@ class RestaurantMemStore : RestaurantStore {
         return restaurants.find { it.id == id }
     }
 
-    // Assigns a new id and adds the restaurant to the list
+    // Validates then assigns a new id and adds the restaurant to the list
     override fun create(restaurant: RestaurantModel) {
+        restaurant.validate()
         restaurant.id = nextId++
         restaurants.add(restaurant)
     }
 
-    // Finds the existing entry by id and updates its fields
+    // Validates then updates each field of the existing entry, including imageUri
     override fun update(restaurant: RestaurantModel): Boolean {
+        restaurant.validate()
         val existing = findOne(restaurant.id) ?: return false
-        existing.title = restaurant.title
-        existing.cuisine = restaurant.cuisine
+        existing.title       = restaurant.title
+        existing.cuisine     = restaurant.cuisine
         existing.description = restaurant.description
-        existing.rating = restaurant.rating
+        existing.rating      = restaurant.rating
+        existing.imageUri    = restaurant.imageUri
         return true
     }
 
