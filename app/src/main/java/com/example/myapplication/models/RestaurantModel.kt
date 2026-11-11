@@ -10,7 +10,9 @@ data class RestaurantModel(
     var cuisine: String = "",
     var description: String = "",
     var rating: Float = 3f,
-    var imageUri: String? = null
+    var imageUri: String? = null,
+    var lat: Double = 52.245954,  // Latitude — defaults to Waterford, Ireland
+    var lng: Double = -7.139539   // Longitude — defaults to Waterford, Ireland
 ) {
     // Called before saving to store — validates required fields.
     // Validation happens at save time, not in init, so the form can be

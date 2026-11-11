@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -7,11 +9,12 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 import com.example.myapplication.models.RestaurantModel
 
 // Screen for adding a new restaurant or editing an existing one.
@@ -30,6 +33,10 @@ class AddEditActivity : AppCompatActivity() {
 
     // Holds the URI of the image chosen by the user
     private var selectedImageUri: Uri? = null
+
+    // Holds the lat/lng picked from the map — defaults to Waterford
+    private var selectedLat: Double = 52.245954
+    private var selectedLng: Double = -7.139539
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,6 +98,28 @@ class AddEditActivity : AppCompatActivity() {
             loadExistingRestaurant(editingId!!)
         }
 
+        // ── Map location picker ───────────────────────────────────────────────
+        val locationText = findViewById<TextView>(R.id.locationText)
+
+        // Launcher that receives lat/lng back from MapPickerActivity
+        val mapPickerLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data = result.data
+                selectedLat = data?.getDoubleExtra("latitude", selectedLat) ?: selectedLat
+                selectedLng = data?.getDoubleExtra("longitude", selectedLng) ?: selectedLng
+                locationText.text = "📍 %.5f, %.5f".format(selectedLat, selectedLng)
+            }
+        }
+
+        findViewById<MaterialButton>(R.id.btnPickLocation).setOnClickListener {
+            val intent = Intent(this, MapPickerActivity::class.java)
+            intent.putExtra("latitude", selectedLat)
+            intent.putExtra("longitude", selectedLng)
+            mapPickerLauncher.launch(intent)
+        }
+
         findViewById<MaterialButton>(R.id.btnSave).setOnClickListener { saveRestaurant() }
         findViewById<MaterialButton>(R.id.btnCancel).setOnClickListener { finish() }
     }
@@ -113,6 +142,11 @@ class AddEditActivity : AppCompatActivity() {
         inputCuisine.setText(restaurant.cuisine, false) // 'false' prevents filtering
         inputDescription.setText(restaurant.description)
         ratingBar.rating = restaurant.rating
+        // Restore saved coordinates and update the label
+        selectedLat = restaurant.lat
+        selectedLng = restaurant.lng
+        findViewById<TextView>(R.id.locationText).text =
+            "📍 %.5f, %.5f".format(selectedLat, selectedLng)
     }
 
     // Builds a RestaurantModel from the form, calls validate(), then saves.
@@ -124,7 +158,9 @@ class AddEditActivity : AppCompatActivity() {
                 cuisine     = inputCuisine.text.toString().trim(),
                 description = inputDescription.text.toString().trim(),
                 rating      = ratingBar.rating,
-                imageUri    = selectedImageUri?.toString()
+                imageUri    = selectedImageUri?.toString(),
+                lat         = selectedLat,
+                lng         = selectedLng
             )
 
             if (editingId == null) {

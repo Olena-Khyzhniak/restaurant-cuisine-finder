@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Full-screen OSM map — takes all remaining space above the button -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Tap the map first, then press this button to confirm and return -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confirmLocationButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Confirm Location"
+        android:textSize="16sp"
+        android:layout_margin="12dp" />
+
+</LinearLayout>
