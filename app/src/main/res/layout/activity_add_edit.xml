@@ -115,6 +115,26 @@
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Shows the currently selected coordinates -->
+        <TextView
+            android:id="@+id/locationText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📍 No location selected"
+            android:textSize="13sp"
+            android:textColor="?attr/colorControlNormal"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Opens the OSM map picker screen -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPickLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pick Location on Map"
+            android:textSize="15sp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginBottom="24dp" />
+
         <!-- Save button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"

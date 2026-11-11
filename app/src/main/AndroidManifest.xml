@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Required for osmdroid to download map tiles -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".main.MainApp"
         android:allowBackup="true"
@@ -46,6 +49,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <!-- MapPickerActivity — full-screen OSM map for picking a location -->
+        <activity
+            android:name=".MapPickerActivity"
+            android:exported="false"
+            android:label="Pick Location" />
 
         <activity
             android:name=".MainActivity"
