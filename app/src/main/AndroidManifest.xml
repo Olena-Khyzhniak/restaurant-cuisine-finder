@@ -56,6 +56,13 @@
             android:exported="false"
             android:label="Pick Location" />
 
+        <!-- MapListActivity — shows all restaurants as markers on a map -->
+        <activity
+            android:name=".MapListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="Restaurant Map" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
