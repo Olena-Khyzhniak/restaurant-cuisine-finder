@@ -1,20 +1,15 @@
 package com.example.myapplication.main
 
 import android.app.Application
-import com.example.myapplication.models.RestaurantMemStore
-import com.example.myapplication.models.RestaurantStore
+import com.example.myapplication.AppData
 
-// Application subclass — created once when the app starts.
-// Holds a single global instance of the data store
-// so all activities share the same data.
+// Application subclass — created once when the app process starts.
+// Initialises AppData so the JSON store is ready before any Activity opens.
 class MainApp : Application() {
-
-    // The global store instance accessible from anywhere in the app
-    lateinit var restaurants: RestaurantStore
 
     override fun onCreate() {
         super.onCreate()
-        // Initialise the in-memory store on app startup
-        restaurants = RestaurantMemStore()
+        // Load restaurants from disk (or create an empty store if first run)
+        AppData.initialize(this)
     }
 }
