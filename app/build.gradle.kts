@@ -40,6 +40,8 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     // OSM map support
     implementation("org.osmdroid:osmdroid-android:6.1.20")
+    // Required for osmdroid Configuration.load() — tile cache and user agent setup
+    implementation("androidx.preference:preference-ktx:1.2.1")
     // JSON persistence
     implementation("com.google.code.gson:gson:2.13.2")
     testImplementation(libs.junit)

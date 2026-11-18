@@ -23,8 +23,10 @@ class MapPickerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Required by osmdroid — identifies the app to the tile server
-        Configuration.getInstance().userAgentValue = packageName
+        // Configure osmdroid: set a proper user agent and local tile cache
+        val config = Configuration.getInstance()
+        config.load(this, androidx.preference.PreferenceManager.getDefaultSharedPreferences(this))
+        config.userAgentValue = "$packageName/1.0 (Android; osmdroid)"
         setContentView(R.layout.activity_map_picker)
 
         map = findViewById(R.id.map)
