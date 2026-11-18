@@ -22,5 +22,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnAddRestaurant).setOnClickListener {
             startActivity(Intent(this, AddEditActivity::class.java))
         }
+
+        // Navigate to the map list screen showing all restaurant locations
+        findViewById<Button>(R.id.btnViewMap).setOnClickListener {
+            startActivity(Intent(this, MapListActivity::class.java))
+        }
     }
 }

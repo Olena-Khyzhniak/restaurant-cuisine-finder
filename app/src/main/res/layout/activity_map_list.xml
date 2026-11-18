@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ConstraintLayout root - map fills the top half of the screen,
+  image and text info panel sits below it.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- OSM map - takes the top portion of the screen -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mapImageView"
+        app:layout_constraintVerticalWeight="1" />
+
+    <!-- Restaurant photo - shown when a marker is tapped -->
+    <ImageView
+        android:id="@+id/mapImageView"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Selected restaurant photo"
+        app:layout_constraintTop_toBottomOf="@id/mapList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mapTitleText" />
+
+    <!-- Restaurant name - updated when a marker is tapped -->
+    <TextView
+        android:id="@+id/mapTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tap a marker to see details"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/mapImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mapDescText" />
+
+    <!-- Restaurant description / cuisine - updated when a marker is tapped -->
+    <TextView
+        android:id="@+id/mapDescText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/mapTitleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

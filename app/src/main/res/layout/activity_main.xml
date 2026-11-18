@@ -33,6 +33,15 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="Add Restaurant"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Navigate to the map list screen showing all restaurant locations -->
+    <Button
+        android:id="@+id/btnViewMap"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="View Map"
         android:textSize="18sp" />
 
 </LinearLayout>
